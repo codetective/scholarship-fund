@@ -1,4 +1,17 @@
+import { useState } from "react";
+
 export default function HeroSection() {
+    const [formData, setFormData] = useState({
+        email: "",
+    });
+    const {email} = formData;
+
+    function onEmailSubmit(e){
+        setFormData({
+            ...formData,
+            [e.target.id]: e.target.value,
+        })
+    }
   return (
     <section className="flex">
       <div className="w-1/2 flex items-center justify-center px-20">
@@ -17,6 +30,8 @@ export default function HeroSection() {
             <input
               type="email"
               id="email"
+              value={email}
+              onChange={onEmailSubmit}
               placeholder="Enter email address"
               className="w-full outline-none focus:ring-0"
             />
