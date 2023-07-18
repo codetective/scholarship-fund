@@ -4,8 +4,9 @@ interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'danger' | 'outline';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
   children: ReactNode;
+  className?: string;
 }
 
 const Button = ({
@@ -14,6 +15,7 @@ const Button = ({
   disabled = false,
   onClick,
   children,
+  className,
   ...rest
 }: ButtonProps) => {
   const baseStyles = `inline-flex items-center justify-center rounded font-medium focus:outline-none focus:ring-2 focus:ring-offset-2`;
@@ -38,7 +40,7 @@ const Button = ({
   return (
     <button
       disabled={disabled}
-      className={`${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${disabledStyles}`}
+      className={`${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${disabledStyles} ${className}`}
       onClick={onClick}
       {...rest}
     >
