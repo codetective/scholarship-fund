@@ -1,8 +1,8 @@
-import { HeroSection } from "../components/landing";
+import { HeroSection } from '../components/landing';
 
 export default function Home() {
   return (
-    <main className="">
+    <main className='bg-gray-50'>
       <HeroSection />
     </main>
   );
