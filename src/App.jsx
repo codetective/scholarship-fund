@@ -4,7 +4,7 @@ import { NavBar } from "./components";
 function App() {
   return (
     <>
-      <div>
+      <div className="relative">
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />}></Route>

@@ -14,7 +14,7 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-white sticky top-0 z-40">
+    <header className="bg-transparent absolute top-0 right-0 left-0 z-40">
       <div className="flex justify-between px-3 py-5 max-w-6xl mx-auto items-center">
         <div>
           <h1 className="font-bold text-4xl text-blue-500 cursor-pointer">
@@ -22,12 +22,12 @@ export default function Header() {
           </h1>
         </div>
         <div className="flex items-center space-x-20">
-          <ul className="hidden sm:flex space-x-10">
+          <ul className="hidden sm:flex space-x-7">
             <li
               className={`cursor-pointer py-3 text-sm font-medium  border-b-[3px]  ${
                 pathMatchRoute("/about")
                   ? "text-black border-b-red-500"
-                  : "text-gray-400 border-b-transparent"
+                  : "text-white border-b-transparent"
               }`}
               onClick={() => navigate("/about")}
             >
@@ -37,7 +37,7 @@ export default function Header() {
               className={`cursor-pointer py-3 text-sm font-medium border-b-[3px] ${
                 pathMatchRoute("/participant")
                   ? "text-black border-b-red-500"
-                  : "text-gray-400 border-b-transparent"
+                  : "text-white border-b-transparent"
               }`}
               onClick={() => navigate("/participant")}
             >
@@ -47,7 +47,7 @@ export default function Header() {
               className={`cursor-pointer py-3 text-sm font-medium border-b-[3px] ${
                 pathMatchRoute("/category")
                   ? "text-black border-b-red-500"
-                  : "text-gray-400 border-b-transparent"
+                  : "text-white border-b-transparent"
               }`}
               onClick={() => navigate("/category")}
             >
@@ -57,7 +57,7 @@ export default function Header() {
               className={`cursor-pointer py-3 text-sm font-medium border-b-[3px] ${
                 pathMatchRoute("/contact")
                   ? "text-black border-b-red-500"
-                  : "text-gray-400 border-b-transparent"
+                  : "text-white border-b-transparent"
               }`}
               onClick={() => navigate("/contact")}
             >
@@ -65,7 +65,7 @@ export default function Header() {
             </li>
           </ul>
           <ul className="hidden sm:flex items-center space-x-2">
-            <li className="py-3 px-4 border rounded-xl font-semibold">
+            <li className="py-3 px-4 text-white border rounded-xl font-semibold">
               Sign Up
             </li>
             <li className="py-3 px-4 bg-orange-400 text-white rounded-xl font-semibold">
