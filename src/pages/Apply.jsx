@@ -14,6 +14,13 @@ export default function Apply() {
     gender: "",
     formOfDisability: "",
     programmeOfStudy: "",
+    certificateOfOrigin: "",
+    birthCertificate: "",
+    admissionLetter: "",
+    feeSchedule: "",
+    letterOfAttestation: "",
+    feeReceipt: "",
+    picture: "",
   });
 
   const {
@@ -23,6 +30,13 @@ export default function Apply() {
     gender,
     formOfDisability,
     programmeOfStudy,
+    certificateOfOrigin,
+    birthCertificate,
+    admissionLetter,
+    feeSchedule,
+    letterOfAttestation,
+    feeReceipt,
+    picture,
   } = formData;
 
   const disabilities = [
@@ -285,7 +299,7 @@ export default function Apply() {
               </p>
             </div>
 
-            <div className="mt-5 flex flex-col gap-2 md:flex-row">
+            <div className="mt-5 flex flex-col gap-5 md:flex-row">
               <input
                 type="text"
                 id="firstName"
@@ -304,7 +318,7 @@ export default function Apply() {
               />
             </div>
 
-            <div className="mt-5 flex flex-col gap-2 md:flex-row">
+            <div className="mt-5 flex flex-col gap-5 md:flex-row">
               <input
                 type="text"
                 id="dateOfBirth"
@@ -361,10 +375,10 @@ export default function Apply() {
             </select>
           </form>
 
-          <div className="mt-10 flex justify-between items-center">
+          <div className="mt-10 flex justify-between items-center gap-2 flex-col md:flex-row">
             <button
               onClick={() => navigate(-1)}
-              className="text-center border border-[#FF7900] text-[#FF7900] py-3 px-20 rounded"
+              className="text-center w-full md:w-auto border border-[#FF7900] text-[#FF7900] py-3 px-20 rounded"
             >
               Back
             </button>
@@ -373,7 +387,7 @@ export default function Apply() {
                 setPage("page-2");
                 window.scroll(0,0)
               }}
-              className="text-center border border-[#FF7900] bg-[#FF7900] text-white py-3 px-20 rounded"
+              className="text-center w-full md:w-auto border border-[#FF7900] bg-[#FF7900] text-white py-3 px-20 rounded"
             >
               Next
             </button>
@@ -414,7 +428,7 @@ export default function Apply() {
               Upload Your Local Government Certificate Of Origin
             </label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="certificateOfOrigin" className="hidden" />
+              <input type="file" id="certificateOfOrigin" value={certificateOfOrigin} onChange={onChange} className="hidden" />
               <label
                 htmlFor="certificateOfOrigin"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -429,7 +443,7 @@ export default function Apply() {
               Birth Certificate/Age Declaration
             </label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="birthCertificate" className="hidden" />
+              <input type="file" id="birthCertificate" value={birthCertificate} onChange={onChange} className="hidden" />
               <label
                 htmlFor="birthCertificate"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -444,7 +458,7 @@ export default function Apply() {
               Jamb Admission Letter/School Notification Admission Letter
             </label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="admissionLetter" className="hidden" />
+              <input type="file" id="admissionLetter" value={admissionLetter} onChange={onChange} className="hidden" />
               <label
                 htmlFor="admissionLetter"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -457,7 +471,7 @@ export default function Apply() {
             {/* Item */}
             <label htmlFor="feeSchedule">Schedule Of School Fees Payment</label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="feeSchedule" className="hidden" />
+              <input type="file" id="feeSchedule" value={feeSchedule} onChange={onChange} className="hidden" />
               <label
                 htmlFor="feeSchedule"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -472,7 +486,7 @@ export default function Apply() {
               Letter Of Attestation By Department HOD
             </label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="letterOfAttestation" className="hidden" />
+              <input type="file" id="letterOfAttestation" value={letterOfAttestation} onChange={onChange} className="hidden" />
               <label
                 htmlFor="letterOfAttestation"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -487,7 +501,7 @@ export default function Apply() {
               School Fees Payment Receipt (Session/Semester Pressiding)
             </label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="feeReceipt" className="hidden" />
+              <input type="file" id="feeReceipt" value={feeReceipt} onChange={onChange} className="hidden" />
               <label
                 htmlFor="feeReceipt"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -502,7 +516,7 @@ export default function Apply() {
               Full Picture Of Beneficiary Showing The Type Of Disability
             </label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="picture" className="hidden" />
+              <input type="file" id="picture" value={picture} onChange={onChange} className="hidden" />
               <label
                 htmlFor="picture"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -513,19 +527,19 @@ export default function Apply() {
             </div>
           </form>
 
-          <div className="mt-10 flex justify-between items-center">
+          <div className="mt-10 flex gap-2 justify-between flex-col md:flex-row items-center">
             <button
               onClick={() => {
                 setPage("page-1");
                 window.scroll(0,0)
               }}
-              className="text-center border border-[#FF7900] text-[#FF7900] py-3 px-20 rounded"
+              className="text-center w-full md:w-auto border border-[#FF7900] text-[#FF7900] py-3 px-20 rounded"
             >
               Back
             </button>
             <button
               onClick={onFormSubmit}
-              className="text-center border border-[#FF7900] bg-[#FF7900] text-white py-3 px-20 rounded"
+              className="text-center w-full md:w-auto border border-[#FF7900] bg-[#FF7900] text-white py-3 px-20 rounded"
             >
               Submit
             </button>
