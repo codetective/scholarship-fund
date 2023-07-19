@@ -1,53 +1,32 @@
-import { useState } from 'react';
 import Container from '../../atoms/Container';
+import Button from '../../atoms/Button';
+import Hero from '../../assets/images/hero.jpg'
 
 export default function HeroSection() {
-  const [formData, setFormData] = useState({
-    email: '',
-  });
-  const { email } = formData;
-
-  function onEmailSubmit(e) {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
-  }
   return (
-    <Container>
-      <section className='flex min-h-[90vh]'>
+    <Container className=''>
+      <section className='flex items-center mt-20'>
         <div className='md:w-1/2 flex items-center justify-center pt-[100px] md:pr-10'>
           <div>
-            <h1 className='text-6xl font-bold text-blue-600'>
-              Free <span className='text-orange-400'>scholarship</span> for
-              every bright student
+            <h1 className='text-6xl font-bold text-[#00563B]'>
+            <span className='text-[#FF7900]'>AKSG 2023</span> Educational Intervention Fund 
             </h1>
-            <p className='my-8 text-sm'>
-              Get free scholarships for every level of education that every
-              student who achievement for a bright future you can get it from
-              school
+            <p className='my-8 text-2xl font-medium text-[#01100B]'>
+            for Students Living With Disability
             </p>
 
-            <div className='shadow-lg rounded-lg p-2 bg-white flex justify-between'>
-              <input
-                type='email'
-                id='email'
-                value={email}
-                onChange={onEmailSubmit}
-                placeholder='Enter email address'
-                className='w-full outline-none focus:ring-0'
-              />
-              <button
-                type='button'
-                className='py-3 px-4 rounded-lg bg-blue-600  text-white'
-              >
-                Submission
-              </button>
-            </div>
+            <Button className='hover:bg-green-900 md:hover:bg-white md:hover:text-green-500 md:bg-[#FF7900] md:border-[#FF7900] md:text-[#01100B] bg-green-500'>
+                  Apply Now!
+            </Button>
           </div>
         </div>
-        <div className='bg-blue-600 w-1/2 hidden md:block rounded-bl-3xl absolute h-full max-h-[90vh] top-0 right-0'></div>
+        <div className='w-1/2 h-[450px] bg-black flex items-center justify-center rounded-lg overflow-hidden'>
+          <img src={Hero} alt="Pastor Umo Eno and Disabled Student" className='object-fit block' />
+        </div>
       </section>
+      <div className="text-center mt-5">
+        <h1 className='text-4xl text-center text-[#00563B]'>Over 1000 people to benefit</h1>
+      </div>
     </Container>
   );
 }

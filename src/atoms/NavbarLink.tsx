@@ -13,7 +13,7 @@ function NavbarLink({ children, to }: NavbarLinkProps) {
 
   const isActiveStyles = pathMatchRoute(to, location.pathname)
     ? 'text-black border-b-red-500'
-    : 'text-white border-b-transparent';
+    : 'text-[#01100B] border-b-transparent';
 
   return (
     <li
