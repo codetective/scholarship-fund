@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./pages";
+import { Apply, Home } from "./pages";
 import { NavBar } from "./components";
 function App() {
   return (
@@ -7,7 +7,8 @@ function App() {
       <div className="relative">
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/apply" element={<Apply />} />
         </Routes>
       </div>
     </>
