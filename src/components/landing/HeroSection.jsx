@@ -61,8 +61,9 @@ export default function HeroSection() {
             </Button>
       </div>
 
-      <section>
-        
+      <section className='bg-mage mx-auto h-[500px] w-[100%]'>
+      <h1 className="text-center font-bold text-[#01100B] text-4xl mt-[50px] pt-10">About Scholarship</h1>
+      <p className='text-[#341901] text-[21px] mt-10 ml-[50px] mr-[50px]'>We are thrilled to introduce the Akwa Ibom State Scholarship Fund, an educational intervention initiative designed specifically for students with disabilities pursuing higher education in Akwa Ibom State. Approved by the esteemed Governor, Pastor Umo Eno, this scholarship fund is a testament to his passion for empowering young future leaders and ensuring equal opportunities for all. <br /><br /> Inspired by Excellence and Impact We firmly believe that every student, regardless of their challenges, has the potential to excel and make a lasting impact. The Governor's unwavering support stems from his recognition of the remarkable passion and drive exhibited by these young individuals. We are committed to fostering an inclusive environment where students with disabilities can thrive academically, personally, and professionally.</p>
       </section>
     </Container>
   );

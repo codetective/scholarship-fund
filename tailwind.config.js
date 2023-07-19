@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:{
+        'mage':"url('./src/assets/images/scholar2.jpg')",
+      },
+    },
   },
   plugins: [],
 }
