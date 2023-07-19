@@ -94,7 +94,7 @@ export default function Apply() {
     "Wheelchair dependence",
     // Add more disabilities here as needed
   ];
-  
+
   const universityPrograms = [
     "Accounting",
     "Aerospace Engineering",
@@ -256,15 +256,32 @@ export default function Apply() {
     "Wildlife Conservation",
     "Zoology",
   ];
-  
+
   function onChange(e) {
-    setFormData({
+    if(e.target.value){
+      setFormData({
         ...formData,
-        [e.target.id]: e.target.value,
-    })
+        [e.target.id]: e.target.value
+      });
+    } else if(e.target.files){
+      setFormData({
+        ...formData,
+        [e.target.id]: e.target.files[0]
+        
+      })
+    }
   }
 
-  async function onFormSubmit() {}
+  function onSubmit(e) {
+    e.preventDefault();
+    setPage("page-2");
+    window.scroll(0, 0);
+  }
+
+  async function onFormSubmit(e) {
+    e.preventDefault();
+   
+  }
 
   return (
     <section className="max-w-screen-lg mx-auto my-10 px-3 lg:px-0">
@@ -290,7 +307,7 @@ export default function Apply() {
             </div>
           </div>
 
-          <form>
+          <form onSubmit={onSubmit}>
             <div className="bg-[#FBE7D5] text-[#01100B] p-5 w-full text-center mt-10 rounded-lg">
               <p>
                 This form is strictly for people with disabilities. Please fill
@@ -307,6 +324,7 @@ export default function Apply() {
                 onChange={onChange}
                 placeholder="First Name"
                 className="py-2 px-8 w-full rounded"
+                required
               />
               <input
                 type="text"
@@ -315,6 +333,7 @@ export default function Apply() {
                 onChange={onChange}
                 placeholder="Last Name"
                 className="py-2 px-8 w-full rounded"
+                required
               />
             </div>
 
@@ -329,6 +348,7 @@ export default function Apply() {
                 onBlur={() => (ref.current.type = "text")}
                 placeholder="Date of Birth"
                 className="py-2 px-8 w-full rounded"
+                required
               />
               <select
                 name="gender"
@@ -337,6 +357,7 @@ export default function Apply() {
                 onChange={onChange}
                 placeholder="Gender"
                 className="py-2 px-8 w-full rounded"
+                required
               >
                 <option value="" selected disabled className="text-gray-500">
                   Gender
@@ -352,10 +373,15 @@ export default function Apply() {
               value={formOfDisability}
               onChange={onChange}
               className="mt-5 py-2 px-8 w-full rounded"
+              required
             >
-              <option value="" selected disabled>Form of Disability</option>
+              <option value="" selected disabled>
+                Form of Disability
+              </option>
               {disabilities.map((disability, index) => (
-                <option key={index} value={disability}>{disability}</option>
+                <option key={index} value={disability}>
+                  {disability}
+                </option>
               ))}
             </select>
 
@@ -365,33 +391,32 @@ export default function Apply() {
               value={programmeOfStudy}
               onChange={onChange}
               className="mt-5 py-2 px-8 w-full rounded"
+              required
             >
               <option value="" selected disabled>
                 Programme of Study
               </option>
               {universityPrograms.map((program, index) => (
-                <option key={index} value={program}>{program}</option>
+                <option key={index} value={program}>
+                  {program}
+                </option>
               ))}
             </select>
+            <div className="mt-10 flex justify-between items-center gap-2 flex-col md:flex-row">
+              <button
+                onClick={() => navigate(-1)}
+                className="text-center w-full md:w-auto border border-[#FF7900] text-[#FF7900] py-3 px-20 rounded"
+              >
+                Back
+              </button>
+              <button
+                type="submit"
+                className="text-center w-full md:w-auto border border-[#FF7900] bg-[#FF7900] text-white py-3 px-20 rounded"
+              >
+                Next
+              </button>
+            </div>
           </form>
-
-          <div className="mt-10 flex justify-between items-center gap-2 flex-col md:flex-row">
-            <button
-              onClick={() => navigate(-1)}
-              className="text-center w-full md:w-auto border border-[#FF7900] text-[#FF7900] py-3 px-20 rounded"
-            >
-              Back
-            </button>
-            <button
-              onClick={() => {
-                setPage("page-2");
-                window.scroll(0,0)
-              }}
-              className="text-center w-full md:w-auto border border-[#FF7900] bg-[#FF7900] text-white py-3 px-20 rounded"
-            >
-              Next
-            </button>
-          </div>
         </div>
       )}
 
@@ -414,7 +439,7 @@ export default function Apply() {
               <p>3</p>
             </div>
           </div>
-          <form>
+          <form onSubmit={onFormSubmit}>
             <div className="bg-[#FBE7D5] text-[#01100B] p-5 w-full text-center my-10 rounded-lg">
               <p>
                 This form is strictly for people with disabilities. Please fill
@@ -428,7 +453,15 @@ export default function Apply() {
               Upload Your Local Government Certificate Of Origin
             </label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="certificateOfOrigin" value={certificateOfOrigin} onChange={onChange} className="hidden" />
+              <input
+                type="file"
+                id="certificateOfOrigin"
+                value={certificateOfOrigin}
+                onChange={onChange}
+                className="hidden"
+                required
+              />
+             
               <label
                 htmlFor="certificateOfOrigin"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -436,6 +469,7 @@ export default function Apply() {
                 <MdFileUpload size={25} />
                 <span>Use a PDF And JPEG</span>
               </label>
+              <p className="text-sm text-[#95A48C]">{certificateOfOrigin}</p>
             </div>
 
             {/* Item */}
@@ -443,7 +477,14 @@ export default function Apply() {
               Birth Certificate/Age Declaration
             </label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="birthCertificate" value={birthCertificate} onChange={onChange} className="hidden" />
+              <input
+                type="file"
+                id="birthCertificate"
+                value={birthCertificate}
+                onChange={onChange}
+                className="hidden"
+                required
+              />
               <label
                 htmlFor="birthCertificate"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -451,6 +492,7 @@ export default function Apply() {
                 <MdFileUpload size={25} />
                 <span>Use a PDF And JPEG</span>
               </label>
+              <p className="text-sm text-[#95A48C]">{birthCertificate}</p>
             </div>
 
             {/* Item */}
@@ -458,7 +500,14 @@ export default function Apply() {
               Jamb Admission Letter/School Notification Admission Letter
             </label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="admissionLetter" value={admissionLetter} onChange={onChange} className="hidden" />
+              <input
+                type="file"
+                id="admissionLetter"
+                value={admissionLetter}
+                onChange={onChange}
+                className="hidden"
+                required
+              />
               <label
                 htmlFor="admissionLetter"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -466,12 +515,20 @@ export default function Apply() {
                 <MdFileUpload size={25} />
                 <span>Use A PDF And JPEG</span>
               </label>
+              <p className="text-sm text-[#95A48C]">{admissionLetter}</p>
             </div>
 
             {/* Item */}
             <label htmlFor="feeSchedule">Schedule Of School Fees Payment</label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="feeSchedule" value={feeSchedule} onChange={onChange} className="hidden" />
+              <input
+                type="file"
+                id="feeSchedule"
+                value={feeSchedule}
+                onChange={onChange}
+                className="hidden"
+                required
+              />
               <label
                 htmlFor="feeSchedule"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -479,6 +536,7 @@ export default function Apply() {
                 <MdFileUpload size={25} />
                 <span>Use A PDF And JPEG</span>
               </label>
+              <p className="text-sm text-[#95A48C]">{feeSchedule}</p>
             </div>
 
             {/* Item */}
@@ -486,7 +544,14 @@ export default function Apply() {
               Letter Of Attestation By Department HOD
             </label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="letterOfAttestation" value={letterOfAttestation} onChange={onChange} className="hidden" />
+              <input
+                type="file"
+                id="letterOfAttestation"
+                value={letterOfAttestation}
+                onChange={onChange}
+                className="hidden"
+                required
+              />
               <label
                 htmlFor="letterOfAttestation"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -494,6 +559,7 @@ export default function Apply() {
                 <MdFileUpload size={25} />
                 <span>Use A PDF And JPEG</span>
               </label>
+              <p className="text-sm text-[#95A48C]">{letterOfAttestation}</p>
             </div>
 
             {/* Item */}
@@ -501,7 +567,14 @@ export default function Apply() {
               School Fees Payment Receipt (Session/Semester Pressiding)
             </label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="feeReceipt" value={feeReceipt} onChange={onChange} className="hidden" />
+              <input
+                type="file"
+                id="feeReceipt"
+                value={feeReceipt}
+                onChange={onChange}
+                className="hidden"
+                required
+              />
               <label
                 htmlFor="feeReceipt"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -509,6 +582,7 @@ export default function Apply() {
                 <MdFileUpload size={25} />
                 <span>Use A PDF And JPEG</span>
               </label>
+              <p className="text-sm text-[#95A48C]">{feeReceipt}</p>
             </div>
 
             {/* Item */}
@@ -516,7 +590,14 @@ export default function Apply() {
               Full Picture Of Beneficiary Showing The Type Of Disability
             </label>
             <div className="border rounded w-full py-2 px-8 mt-2 mb-5">
-              <input type="file" id="picture" value={picture} onChange={onChange} className="hidden" />
+              <input
+                type="file"
+                id="picture"
+                value={picture}
+                onChange={onChange}
+                className="hidden"
+                required
+              />
               <label
                 htmlFor="picture"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -524,26 +605,29 @@ export default function Apply() {
                 <MdFileUpload size={25} />
                 <span>Use A PDF And JPEG</span>
               </label>
+              <p className="text-sm text-[#95A48C]">{picture}</p>
             </div>
-          </form>
-
-          <div className="mt-10 flex gap-2 justify-between flex-col md:flex-row items-center">
+            <div className="mt-10 flex gap-2 justify-between flex-col md:flex-row items-center">
             <button
               onClick={() => {
                 setPage("page-1");
-                window.scroll(0,0)
+                window.scroll(0, 0);
               }}
               className="text-center w-full md:w-auto border border-[#FF7900] text-[#FF7900] py-3 px-20 rounded"
             >
               Back
             </button>
             <button
-              onClick={onFormSubmit}
+              // onClick={onFormSubmit}
+              type="submit"
               className="text-center w-full md:w-auto border border-[#FF7900] bg-[#FF7900] text-white py-3 px-20 rounded"
             >
               Submit
             </button>
           </div>
+          </form>
+
+          
         </div>
       )}
     </section>

@@ -21,7 +21,7 @@ const Container = ({
   borderRadius = '',
   boxShadow = '',
 }: ContainerProps): JSX.Element => {
-  const containerClasses = `mx-auto px-5 max-w-${maxWidth} ${padding} ${margin} ${
+  const containerClasses = ` ${padding} ${margin} ${
     backgroundColor ? `bg-${backgroundColor}` : ''
   } ${borderRadius} ${boxShadow} ${className}`;
 
@@ -29,3 +29,4 @@ const Container = ({
 };
 
 export default Container;
+//mx-auto px-5 max-w-${maxWidth}
