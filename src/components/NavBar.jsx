@@ -12,7 +12,7 @@ export default function Header() {
       <Container>
         <div className='flex justify-between py-5 mx-auto items-center'>
           <LogoText />
-          <div className='flex items-center space-x-10'>
+          <div className='flex items-center space-x-10 md:justify-center md:w-full'>
             <ul className='hidden sm:flex space-x-7'>
               {navbarLinks.map((link) => (
                 <NavbarLink key={link.path} to={link.path}>
@@ -20,7 +20,7 @@ export default function Header() {
                 </NavbarLink>
               ))}
               <Link to='/apply'>
-                <Button className='hover:bg-green-900 md:hover:bg-white md:hover:text-green-500 md:bg-[#FF7900] md:border-[#FF7900] md:text-[#01100B] bg-green-500'>
+                <Button className='hover:bg-green-900 md:hover:bg-white md:hover:text-green-500 md:bg-[#FF7900] md:border-[#FF7900] md:text-white bg-green-500'>
                   Apply Now!
                 </Button>
               </Link>

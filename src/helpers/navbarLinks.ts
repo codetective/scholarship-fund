@@ -1,15 +1,15 @@
 const navbarLinks = [
     {
-        path: '/apply',
-        name: 'Apply Now'
+        path: '/about',
+        name: 'About'
     },
     {
-        path: '/about',
-        name: 'More Info'
+        path: '/benefits',
+        name: 'Benefits'
     },
     {
         path: '/contact',
-        name: 'Contact'
+        name: 'Contact Us'
     },
 ]
 

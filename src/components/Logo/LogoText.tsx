@@ -1,10 +1,11 @@
 import React from 'react';
 
+
 function LogoText() {
   return (
-    <h1 className='font-bold text-3xl text-blue-500 cursor-pointer'>
-      Raise<span className='text-orange-500'>Me</span>
-    </h1>
+    <div className='w-20 h-20'>
+      <img src="/logo.svg" alt="logo" className='object-cover w-full' />
+    </div>
   );
 }
 
