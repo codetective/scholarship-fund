@@ -14,7 +14,7 @@ export default function HeroSection() {
               Intervention Fund
             </h1>
             <p className="my-8 text-base md:text-2xl font-medium text-[#01100B]">
-              For Students With Disability in Higher institution{" "}
+            For Undergraduate Students With Disability in Higher institution
             </p>
 
             <Button className="hover:bg-green-900 md:hover:bg-white md:hover:text-green-500 md:bg-[#FF7900] md:border-[#FF7900] md:text-[#ffffff] bg-green-500">
