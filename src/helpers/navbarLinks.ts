@@ -1,14 +1,14 @@
 const navbarLinks = [
     {
-        path: '/about',
+        path: '#about',
         name: 'About'
     },
     {
-        path: '/benefits',
+        path: '#benefits',
         name: 'Benefits'
     },
     {
-        path: '/contact',
+        path: '#contact',
         name: 'Contact Us'
     },
 ]

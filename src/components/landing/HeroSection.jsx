@@ -30,7 +30,7 @@ export default function HeroSection() {
           />
         </div>
       </section>
-      <div className="bg-[#F9D6C2] py-10">
+      <div className="bg-[#F9D6C2] py-10" id="benefits">
         <div className="mt-20 px-3 max-w-[1100px] mx-auto">
           <h1 className="text-center font-bold text-[#01100B] text-4xl mt-5">
             Intervention Benefits
@@ -97,10 +97,11 @@ export default function HeroSection() {
       </div>
 
       <section
-        className="bg-[url('/scholar2.svg')] mx-auto"
+      id="about"
+        className="pb-20 pt-24 bg-[url('/scholar2.svg')] mx-auto"
         style={{ backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center" }}
       >
-        <div className="max-w-screen-lg mx-auto px-3 py-10 xl:px-0">
+        <div className="max-w-screen-lg mx-auto px-3 xl:px-0">
           <h1 className="text-center font-bold text-[#01100B] text-4xl">
             About Scheme
           </h1>

@@ -1,21 +1,20 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 // import NavbarLink from '../atoms/NavbarLink';
-import navbarLinks from '../helpers/navbarLinks';
+import navbarLinks from "../helpers/navbarLinks";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import Button from '../atoms/Button';
-
+import Button from "../atoms/Button";
 
 const HeaderComponent = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [toggleDrawer, setToggleDrawer] = useState(false);
 
-  function pathMatchRoute(route){
-    if(route === location.pathname){
-        return true;
+  function pathMatchRoute(route) {
+    if (route === location.pathname) {
+      return true;
     }
-}
+  }
 
   return (
     <header
@@ -31,7 +30,7 @@ const HeaderComponent = () => {
           className="cursor-pointer z-[100]"
           onClick={() => {
             navigate("/");
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
           }}
         />
         {!toggleDrawer ? (
@@ -50,31 +49,40 @@ const HeaderComponent = () => {
         <div className="md:flex hidden flex-row justify-end items-center gap-4">
           <ul className="flex">
             {navbarLinks.map((link) => (
-              <li
-                key={link.name}
-                className={`cursor-pointer ml-4
-                }`}
-                onClick={() => {
-                  setToggleDrawer(false);
-                  navigate(link.link);
-                  window.scrollTo(0,0);
-                }}
-              >
-                <p
-                className={`text-sm font-medium ${
-                    pathMatchRoute(link.link) ? "text-[#086357]" : "text-black"
-                  }`}
+              <a key={link.name} href={link.path}>
+                <li
+                  className={`flex p-4 active:text-[#089887] active:bg-inherit`}
+                  onClick={() => {
+                    setToggleDrawer(false);
+                    navigate(link.link);
+                    window.scrollTo(0, 0);
+                  }}
                 >
-                  {link.name}
-                </p>
-              </li>
+                  <p
+                    className={`ml-[20px] font-epilogue font-medium text-sm cursor-pointer ${
+                      pathMatchRoute(link.link)
+                        ? "text-[#089887]"
+                        : "text-[#808191]"
+                    }`}
+                  >
+                    {link.name}
+                  </p>
+                </li>
+              </a>
             ))}
           </ul>
-          <Link to='/apply'>
-              <Button className='hover:bg-green-900 md:hover:bg-white md:hover:text-green-500 md:bg-[#FF7900] md:border-[#FF7900] md:text-white bg-green-500'>
-               Apply Now!
-              </Button>
-            </Link>
+          {/* <Link to='/apply'> */}
+          <Button
+            onClick={() => {
+              setToggleDrawer(false);
+              navigate("/apply");
+              window.scrollTo(0, 0);
+            }}
+            className="hover:bg-green-900 md:hover:bg-white md:hover:text-green-500 md:bg-[#FF7900] md:border-[#FF7900] md:text-white bg-green-500"
+          >
+            Apply Now!
+          </Button>
+          {/* </Link> */}
         </div>
       </nav>
       {/* small screen navigation */}
@@ -86,31 +94,39 @@ const HeaderComponent = () => {
         >
           <ul className="mb-4">
             {navbarLinks.map((link) => (
-              <li
-                key={link.name}
-                className={`flex p-4 active:text-[#089887] active:bg-inherit`}
-                onClick={() => {
-                  setToggleDrawer(false);
-                  navigate(link.link);
-                  window.scrollTo(0,0);
-                }}
-              >
-                <p
-                  className={`ml-[20px] font-epilogue font-medium text-sm cursor-pointer ${
-                    pathMatchRoute(link.link) ? "text-[#089887]" : "text-[#808191]"
-                  }`}
+              <a key={link.name} href={link.path}>
+                <li
+                  className={`flex p-4 active:text-[#089887] active:bg-inherit`}
+                  onClick={() => {
+                    setToggleDrawer(false);
+                    navigate(link.link);
+                    window.scrollTo(0, 0);
+                  }}
                 >
-                  {link.name}
-                </p>
-              </li>
+                  <p
+                    className={`ml-[20px] font-epilogue font-medium text-sm cursor-pointer ${
+                      pathMatchRoute(link.link)
+                        ? "text-[#089887]"
+                        : "text-[#808191]"
+                    }`}
+                  >
+                    {link.name}
+                  </p>
+                </li>
+              </a>
             ))}
           </ul>
           <div className="flex mx-4">
-          <Link to='/apply'>
-              <Button className='hover:bg-green-900 md:hover:bg-white md:hover:text-green-500 md:bg-[#FF7900] md:border-[#FF7900] md:text-white bg-green-500'>
-               Apply Now!
-              </Button>
-            </Link>
+          <Button
+            onClick={() => {
+              setToggleDrawer(false);
+              navigate("/apply");
+              window.scrollTo(0, 0);
+            }}
+            className="hover:bg-green-900 md:hover:bg-white md:hover:text-green-500 md:bg-[#FF7900] md:border-[#FF7900] md:text-white bg-green-500"
+          >
+            Apply Now!
+          </Button>
           </div>
         </div>
       </div>
@@ -119,34 +135,6 @@ const HeaderComponent = () => {
 };
 
 export default HeaderComponent;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import { Link } from 'react-router-dom';
 // import NavbarLink from '../atoms/NavbarLink';
@@ -158,29 +146,29 @@ export default HeaderComponent;
 
 // export default function Header() {
 //   return (
-    
+
 //     );
 //   }
-  
-  // <header className='bg-[#FBE7D5] top-0 right-0 left-0 z-40'>
-  //   <Container>
-  //     <div className='flex justify-between py-5 mx-auto items-center'>
-  //       <LogoText />
-  //       <div className='flex items-center space-x-10 md:justify-center md:w-full'>
-  //         <ul className='hidden sm:flex space-x-7'>
-  //           {navbarLinks.map((link) => (
-  //             <NavbarLink key={link.path} to={link.path}>
-  //               {link.name}
-  //             </NavbarLink>
-  //           ))}
-  //           <Link to='/apply'>
-  //             <Button className='hover:bg-green-900 md:hover:bg-white md:hover:text-green-500 md:bg-[#FF7900] md:border-[#FF7900] md:text-white bg-green-500'>
-  //               Apply Now!
-  //             </Button>
-  //           </Link>
-  //         </ul>
-  //       </div>
-  //       <MobileMenu />
-  //     </div>
-  //   </Container>
-  //  </header>
+
+// <header className='bg-[#FBE7D5] top-0 right-0 left-0 z-40'>
+//   <Container>
+//     <div className='flex justify-between py-5 mx-auto items-center'>
+//       <LogoText />
+//       <div className='flex items-center space-x-10 md:justify-center md:w-full'>
+//         <ul className='hidden sm:flex space-x-7'>
+//           {navbarLinks.map((link) => (
+//             <NavbarLink key={link.path} to={link.path}>
+//               {link.name}
+//             </NavbarLink>
+//           ))}
+//           <Link to='/apply'>
+//             <Button className='hover:bg-green-900 md:hover:bg-white md:hover:text-green-500 md:bg-[#FF7900] md:border-[#FF7900] md:text-white bg-green-500'>
+//               Apply Now!
+//             </Button>
+//           </Link>
+//         </ul>
+//       </div>
+//       <MobileMenu />
+//     </div>
+//   </Container>
+//  </header>
