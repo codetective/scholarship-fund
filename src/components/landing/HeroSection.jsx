@@ -10,7 +10,7 @@ export default function HeroSection() {
         <div className="md:w-1/2 text-center md:text-left w-full flex items-center mb-10 md:mb-0 justify-center pt-[100px] md:pr-10">
           <div className="heading-font">
             <h1 className="text-5xl md:text-6xl font-bold text-[#00563B]">
-              <span className="text-[#FF7900]">AKSG 2023</span> Education
+              <span className="text-[#FF7900]">2023 Akwa Ibom State</span> Education
               Intervention Fund
             </h1>
             <p className="my-8 text-base md:text-2xl font-medium text-[#01100B]">
