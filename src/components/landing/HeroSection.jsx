@@ -97,7 +97,7 @@ export default function HeroSection() {
       </div>
 
       <section
-        className="bg-mage mx-auto"
+        className="bg-[url('/scholar2.svg')] mx-auto"
         style={{ backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center" }}
       >
         <div className="max-w-screen-lg mx-auto px-3 py-10 xl:px-0">
