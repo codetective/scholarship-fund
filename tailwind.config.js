@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       backgroundImage:{
-        'mage':"url('./src/assets/images/scholar2.jpg')",
+        'mage':"url('./src/assets/images/scholar2.svg')",
       },
     },
   },
