@@ -14,7 +14,7 @@ interface ContainerProps {
 const Container = ({
   children,
   className = '',
-  maxWidth = '6xl',
+  maxWidth = '8xl',
   padding = '',
   margin = '',
   backgroundColor = '',
@@ -23,7 +23,7 @@ const Container = ({
 }: ContainerProps): JSX.Element => {
   const containerClasses = ` ${padding} ${margin} ${
     backgroundColor ? `bg-${backgroundColor}` : ''
-  } ${borderRadius} ${boxShadow} ${className}`;
+  } ${borderRadius} ${boxShadow} ${className} mx-auto px-5 max-w-${maxWidth}`;
 
   return <div className={containerClasses}>{children}</div>;
 };
