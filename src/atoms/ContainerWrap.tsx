@@ -11,10 +11,9 @@ interface ContainerProps {
   boxShadow?: string;
 }
 
-const Container = ({
+const ContainerWrap = ({
   children,
   className = '',
-  maxWidth = '8xl',
   padding = '',
   margin = '',
   backgroundColor = '',
@@ -23,10 +22,10 @@ const Container = ({
 }: ContainerProps): JSX.Element => {
   const containerClasses = ` ${padding} ${margin} ${
     backgroundColor ? `bg-${backgroundColor}` : ''
-  } ${borderRadius} ${boxShadow} ${className} mx-auto px-5 max-w-${maxWidth}`;
+  } ${borderRadius} ${boxShadow} ${className} h-full mx-auto px-6 max-w-[1320px]`;
 
   return <div className={containerClasses}>{children}</div>;
 };
 
-export default Container;
+export default ContainerWrap;
 //mx-auto px-5 max-w-${maxWidth}

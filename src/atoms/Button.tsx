@@ -10,7 +10,7 @@ interface ButtonProps {
 }
 
 const Button = ({
-  variant = 'primary',
+  variant,
   size = 'medium',
   disabled = false,
   onClick,
@@ -18,7 +18,7 @@ const Button = ({
   className,
   ...rest
 }: ButtonProps) => {
-  const baseStyles = `inline-flex items-center justify-center rounded font-medium focus:outline-none focus:ring-2 focus:ring-offset-2`;
+  const baseStyles = `transition ease inline-flex items-center justify-center rounded font-medium focus:outline-none focus:ring-2 focus:ring-offset-2`;
 
   const sizeStyles = {
     small: `px-2 py-1 text-sm`,
@@ -40,7 +40,9 @@ const Button = ({
   return (
     <button
       disabled={disabled}
-      className={`${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${disabledStyles} ${className}`}
+      className={`${baseStyles} ${sizeStyles[size]} ${
+        variant ? variantStyles[variant] : ''
+      } ${disabledStyles} ${className}`}
       onClick={onClick}
       {...rest}
     >

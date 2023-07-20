@@ -17,7 +17,7 @@ function NavbarLink({ children, to }: NavbarLinkProps) {
 
   return (
     <li
-      className={`cursor-pointer py-2 text-shadow text-md font-medium border-b-[3px] underline-on-hover ${isActiveStyles}`}
+      className={`cursor-pointer py-2 text-shadow text-lg font-medium border-b-[3px] underline-on-hover ${isActiveStyles}`}
       onClick={() => navigate(to)}
     >
       {children}

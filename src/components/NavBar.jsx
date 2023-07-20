@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 // import NavbarLink from '../atoms/NavbarLink';
-import navbarLinks from "../helpers/navbarLinks";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import Button from "../atoms/Button";
+import navbarLinks from '../helpers/navbarLinks';
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import Button from '../atoms/Button';
+import ContainerWrap from '../atoms/ContainerWrap';
 
 const HeaderComponent = () => {
   const navigate = useNavigate();
@@ -20,116 +21,118 @@ const HeaderComponent = () => {
     <header
       className={`sticky shadow-md top-0 right-0 left-0 bg-[#FBE7D5] h-24 z-[100]`}
     >
-      <nav className="w-full h-full px-3 xl:px-0 flex items-center justify-between max-w-screen-lg mx-auto transition duration-200 ease-in">
-        <img
-          src="/logo.svg"
-          loading="lazy"
-          alt="logo"
-          width={50}
-          height={50}
-          className="cursor-pointer z-[100]"
-          onClick={() => {
-            navigate("/");
-            window.scrollTo(0, 0);
-          }}
-        />
-        {!toggleDrawer ? (
-          <AiOutlineMenu
-            size={25}
-            className="mr-4 z-[100] cursor-pointer md:hidden transition duration-200 ease-in"
-            onClick={() => setToggleDrawer((prev) => !prev)}
-          />
-        ) : (
-          <AiOutlineClose
-            size={25}
-            className="mr-4 z-[100] cursor-pointer transition duration-200 ease-in"
-            onClick={() => setToggleDrawer((prev) => !prev)}
-          />
-        )}
-        <div className="md:flex hidden flex-row justify-end items-center gap-4">
-          <ul className="flex">
-            {navbarLinks.map((link) => (
-              <a key={link.name} href={link.path}>
-                <li
-                  className={`flex p-4 active:text-[#089887] active:bg-inherit`}
-                  onClick={() => {
-                    setToggleDrawer(false);
-                    navigate(link.link);
-                    window.scrollTo(0, 0);
-                  }}
-                >
-                  <p
-                    className={`ml-[20px] font-epilogue font-medium text-sm cursor-pointer ${
-                      pathMatchRoute(link.link)
-                        ? "text-[#089887]"
-                        : "text-[#808191]"
-                    }`}
-                  >
-                    {link.name}
-                  </p>
-                </li>
-              </a>
-            ))}
-          </ul>
-          {/* <Link to='/apply'> */}
-          <Button
+      <ContainerWrap>
+        <nav className='w-full h-full  flex items-center justify-between mx-auto transition duration-200 ease-in'>
+          <img
+            src='/logo.svg'
+            loading='lazy'
+            alt='logo'
+            width={50}
+            height={50}
+            className='cursor-pointer z-[100]'
             onClick={() => {
-              setToggleDrawer(false);
-              navigate("/apply");
+              navigate('/');
               window.scrollTo(0, 0);
             }}
-            className="hover:bg-green-900 md:hover:bg-white md:hover:text-green-500 md:bg-[#FF7900] md:border-[#FF7900] md:text-white bg-green-500"
-          >
-            Apply Now!
-          </Button>
-          {/* </Link> */}
-        </div>
-      </nav>
-      {/* small screen navigation */}
-      <div className="md:hidden flex justify-between items-center relative z-[99]">
-        <div
-          className={`h-[100vh] absolute top-0 right-0 left-0 bottom-0 bg-[#FBE7D5] z-10 shadow-secondary py-4 ${
-            !toggleDrawer ? "-translate-y-[100vh]" : "translate-y-0"
-          } transition-all duration-700`}
-        >
-          <ul className="mb-4">
-            {navbarLinks.map((link) => (
-              <a key={link.name} href={link.path}>
-                <li
-                  className={`flex p-4 active:text-[#089887] active:bg-inherit`}
-                  onClick={() => {
-                    setToggleDrawer(false);
-                    navigate(link.link);
-                    window.scrollTo(0, 0);
-                  }}
-                >
-                  <p
-                    className={`ml-[20px] font-epilogue font-medium text-sm cursor-pointer ${
-                      pathMatchRoute(link.link)
-                        ? "text-[#089887]"
-                        : "text-[#808191]"
-                    }`}
+          />
+          {!toggleDrawer ? (
+            <AiOutlineMenu
+              size={25}
+              className='mr-4 z-[100] cursor-pointer md:hidden transition duration-200 ease-in'
+              onClick={() => setToggleDrawer((prev) => !prev)}
+            />
+          ) : (
+            <AiOutlineClose
+              size={25}
+              className='mr-4 z-[100] cursor-pointer transition duration-200 ease-in'
+              onClick={() => setToggleDrawer((prev) => !prev)}
+            />
+          )}
+          <div className='md:flex hidden flex-row justify-end items-center gap-4'>
+            <ul className='flex'>
+              {navbarLinks.map((link) => (
+                <a key={link.name} href={link.path}>
+                  <li
+                    className={`flex p-4 active:text-[#089887] active:bg-inherit`}
+                    onClick={() => {
+                      setToggleDrawer(false);
+                      navigate(link.link);
+                      window.scrollTo(0, 0);
+                    }}
                   >
-                    {link.name}
-                  </p>
-                </li>
-              </a>
-            ))}
-          </ul>
-          <div className="flex mx-4">
-          <Button
-            onClick={() => {
-              setToggleDrawer(false);
-              navigate("/apply");
-              window.scrollTo(0, 0);
-            }}
-            className="hover:bg-green-900 md:hover:bg-white md:hover:text-green-500 md:bg-[#FF7900] md:border-[#FF7900] md:text-white bg-green-500"
+                    <p
+                      className={`heading-font hover:text-orange-500 font-epilogue font-medium text-md cursor-pointer ${
+                        pathMatchRoute(link.link)
+                          ? 'text-[#089887]'
+                          : 'text-[#808191]'
+                      }`}
+                    >
+                      {link.name}
+                    </p>
+                  </li>
+                </a>
+              ))}
+            </ul>
+            {/* <Link to='/apply'> */}
+            <Button
+              onClick={() => {
+                setToggleDrawer(false);
+                navigate('/apply');
+                window.scrollTo(0, 0);
+              }}
+              className='hover:bg-orange-900 md:bg-[#FF7900] md:border-[#FF7900] text-white'
+            >
+              Apply Now!
+            </Button>
+            {/* </Link> */}
+          </div>
+        </nav>
+        {/* small screen navigation */}
+        <div className='md:hidden flex justify-between items-center relative z-[99]'>
+          <div
+            className={`h-[100vh] absolute top-0 right-0 left-0 bottom-0 bg-[#FBE7D5] z-10 shadow-secondary py-4 ${
+              !toggleDrawer ? '-translate-y-[100vh]' : 'translate-y-0'
+            } transition-all duration-700`}
           >
-            Apply Now!
-          </Button>
+            <ul className='mb-4'>
+              {navbarLinks.map((link) => (
+                <a key={link.name} href={link.path}>
+                  <li
+                    className={`flex p-4 active:text-[#089887] active:bg-inherit`}
+                    onClick={() => {
+                      setToggleDrawer(false);
+                      navigate(link.link);
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    <p
+                      className={`ml-[20px] hover:text-orange-500 font-epilogue font-medium text-sm cursor-pointer ${
+                        pathMatchRoute(link.link)
+                          ? 'text-[#089887]'
+                          : 'text-[#808191]'
+                      }`}
+                    >
+                      {link.name}
+                    </p>
+                  </li>
+                </a>
+              ))}
+            </ul>
+            <div className='flex mx-4'>
+              <Button
+                onClick={() => {
+                  setToggleDrawer(false);
+                  navigate('/apply');
+                  window.scrollTo(0, 0);
+                }}
+                className='hover:bg-orange-900 md:bg-[#FF7900] md:border-[#FF7900] text-white'
+              >
+                Apply Now!
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      </ContainerWrap>
     </header>
   );
 };
