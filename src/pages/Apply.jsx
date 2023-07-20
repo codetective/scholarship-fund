@@ -13,6 +13,8 @@ export default function Apply() {
     dateOfBirth: "",
     gender: "",
     formOfDisability: "",
+    lga: "",
+    courseOfStudy: "",
     programmeOfStudy: "",
     certificateOfOrigin: "",
     birthCertificate: "",
@@ -30,6 +32,8 @@ export default function Apply() {
     gender,
     formOfDisability,
     programmeOfStudy,
+    lga,
+    courseOfStudy,
     certificateOfOrigin,
     birthCertificate,
     admissionLetter,
@@ -39,237 +43,32 @@ export default function Apply() {
     picture,
   } = formData;
 
-  const disabilities = [
-    "ADHD", // Attention-Deficit/Hyperactivity Disorder
-    "AIDS", // Acquired Immunodeficiency Syndrome
-    "Albinism",
-    "Amputation",
-    "Anxiety Disorders",
-    "Arthritis",
-    "Asperger Syndrome",
-    "Asthma",
-    "Autism Spectrum Disorder",
-    "Blindness",
-    "Brain Injury",
-    "Cancer",
-    "Cerebral Palsy",
-    "Chronic Fatigue Syndrome",
-    "Deafness",
-    "Depression",
-    "Developmental Disabilities",
-    "Diabetes",
-    "Down Syndrome",
-    "Dyslexia",
-    "Eating Disorders",
-    "Epilepsy",
-    "Fibromyalgia",
-    "Glaucoma",
-    "Heart Conditions",
-    "Hemophilia",
-    "HIV",
-    "Huntington's Disease",
-    "Intellectual Disability",
-    "Learning Disabilities",
-    "Lupus",
-    "Mental Illness",
-    "Migraine",
-    "Multiple Sclerosis",
-    "Muscular Dystrophy",
-    "Neurological Disorders",
-    "Obsessive-Compulsive Disorder (OCD)",
-    "Orthopedic Impairments",
-    "Paraplegia",
-    "Parkinson's Disease",
-    "Post-Traumatic Stress Disorder (PTSD)",
-    "Quadriplegia",
-    "Schizophrenia",
-    "Scoliosis",
-    "Sensory Processing Disorder",
-    "Speech and Language Disorders",
-    "Spina Bifida",
-    "Spinal Cord Injury",
-    "Stroke",
-    "Tourette Syndrome",
-    "Visual Impairment",
-    "Wheelchair dependence",
-    // Add more disabilities here as needed
-  ];
-
   const universityPrograms = [
-    "Accounting",
-    "Aerospace Engineering",
-    "African Studies",
-    "Agricultural Economics",
-    "Agricultural Engineering",
-    "Agricultural Science",
-    "American Studies",
-    "Animal Science",
-    "Anthropology",
-    "Applied Mathematics",
-    "Applied Physics",
-    "Arabic Studies",
-    "Archaeology",
-    "Architecture",
-    "Art Education",
-    "Art History",
-    "Asian Studies",
-    "Astronomy",
-    "Aviation Management",
-    "Biochemistry",
-    "Bioinformatics",
-    "Biological Engineering",
-    "Biology",
-    "Biomedical Engineering",
-    "Biotechnology",
-    "Broadcasting",
-    "Business Administration",
-    "Business Analytics",
-    "Business Economics",
-    "Chemical Engineering",
-    "Chemistry",
-    "Child Development",
-    "Chinese Studies",
-    "Civil Engineering",
-    "Classical Studies",
-    "Cognitive Science",
-    "Communication Studies",
-    "Comparative Literature",
-    "Computer Engineering",
-    "Computer Science",
-    "Construction Management",
-    "Criminal Justice",
-    "Criminology",
-    "Culinary Arts",
-    "Dance",
-    "Data Science",
-    "Dentistry",
-    "Digital Media",
-    "Earth Sciences",
-    "East Asian Studies",
-    "Ecology",
-    "Economics",
-    "Education",
-    "Electrical Engineering",
-    "Electronic Engineering",
-    "Elementary Education",
-    "Engineering Management",
-    "English Language and Literature",
-    "Environmental Engineering",
-    "Environmental Science",
-    "Ethnic Studies",
-    "European Studies",
-    "Fashion Design",
-    "Film Studies",
-    "Finance",
-    "Fine Arts",
-    "Food Science",
-    "Forensic Science",
-    "French Studies",
-    "Game Design",
-    "Gender Studies",
-    "Genetics",
-    "Geography",
-    "Geology",
-    "German Studies",
-    "Global Studies",
-    "Graphic Design",
-    "Health Administration",
-    "History",
-    "Horticulture",
-    "Hospitality Management",
-    "Human Resources",
-    "Human Services",
-    "Industrial Design",
-    "Industrial Engineering",
-    "Information Systems",
-    "Information Technology",
-    "Interior Design",
-    "International Business",
-    "International Relations",
-    "Italian Studies",
-    "Japanese Studies",
-    "Jewish Studies",
-    "Journalism",
-    "Kinesiology",
-    "Landscape Architecture",
-    "Languages and Linguistics",
-    "Latin American Studies",
-    "Law",
-    "Liberal Arts",
-    "Library Science",
-    "Literature",
-    "Management",
-    "Marine Biology",
-    "Marketing",
-    "Materials Engineering",
-    "Materials Science",
-    "Mathematics",
-    "Mechanical Engineering",
-    "Media Studies",
-    "Medicine",
-    "Meteorology",
-    "Microbiology",
-    "Middle Eastern Studies",
-    "Military Science",
-    "Modern Languages",
-    "Music",
-    "Nanotechnology",
-    "Natural Resource Management",
-    "Neuroscience",
-    "Nursing",
-    "Nutrition",
-    "Occupational Therapy",
-    "Oceanography",
-    "Operations Management",
-    "Organizational Leadership",
-    "Painting",
-    "Paleontology",
-    "Pharmacy",
-    "Philosophy",
-    "Photography",
-    "Physical Education",
-    "Physical Therapy",
-    "Physics",
-    "Physiology",
-    "Plant Science",
-    "Political Science",
-    "Pre-Medical Studies",
-    "Psychology",
-    "Public Health",
-    "Public Policy",
-    "Public Relations",
-    "Radiology",
-    "Robotics Engineering",
-    "Russian Studies",
-    "Sociology",
-    "Software Engineering",
-    "Spanish Studies",
-    "Sports Management",
-    "Statistics",
-    "Sustainability Studies",
-    "Systems Engineering",
-    "Theater",
-    "Urban Planning",
-    "Veterinary Medicine",
-    "Video Game Development",
-    "Visual Arts",
-    "Wildlife Conservation",
-    "Zoology",
-  ];
+    "NCE",
+    "OND",
+    "ND",
+    "HND",
+    "BSC",
+    "MSC",
+    "PHD"
+  ]
 
   function onChange(e) {
-    if(e.target.value){
-      setFormData({
-        ...formData,
-        [e.target.id]: e.target.value
-      });
-    } else if(e.target.files){
-      setFormData({
-        ...formData,
-        [e.target.id]: e.target.files[0]
-        
-      })
-    }
+    // if (e.target.value) {
+    //   setFormData({
+    //     ...formData,
+    //     [e.target.id]: e.target.value,
+    //   });
+    // } else if (e.target.files) {
+    //   setFormData({
+    //     ...formData,
+    //     [e.target.id]: e.target.files[0],
+    //   });
+    // }
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
   }
 
   function onSubmit(e) {
@@ -280,7 +79,6 @@ export default function Apply() {
 
   async function onFormSubmit(e) {
     e.preventDefault();
-   
   }
 
   return (
@@ -367,23 +165,15 @@ export default function Apply() {
               </select>
             </div>
 
-            <select
-              name="formOfDisability"
+            <input
+              type="text"
               id="formOfDisability"
               value={formOfDisability}
               onChange={onChange}
+              placeholder="Form of Disability"
               className="mt-5 py-2 px-8 w-full rounded"
               required
-            >
-              <option value="" selected disabled>
-                Form of Disability
-              </option>
-              {disabilities.map((disability, index) => (
-                <option key={index} value={disability}>
-                  {disability}
-                </option>
-              ))}
-            </select>
+            />
 
             <select
               name="programmeOfStudy"
@@ -402,6 +192,24 @@ export default function Apply() {
                 </option>
               ))}
             </select>
+            <input
+              type="text"
+              id="courseOfStudy"
+              value={courseOfStudy}
+              onChange={onChange}
+              placeholder="Course of Study"
+              className="mt-5 py-2 px-8 w-full rounded"
+              required
+            />
+            <input
+              type="text"
+              id="lga"
+              value={lga}
+              onChange={onChange}
+              placeholder="LGA"
+              className="mt-5 py-2 px-8 w-full rounded"
+              required
+            />
             <div className="mt-10 flex justify-between items-center gap-2 flex-col md:flex-row">
               <button
                 onClick={() => navigate(-1)}
@@ -461,7 +269,7 @@ export default function Apply() {
                 className="hidden"
                 required
               />
-             
+
               <label
                 htmlFor="certificateOfOrigin"
                 className="text-[#95A48C] flex items-center gap-2 font-medium"
@@ -608,26 +416,24 @@ export default function Apply() {
               <p className="text-sm text-[#95A48C]">{picture}</p>
             </div>
             <div className="mt-10 flex gap-2 justify-between flex-col md:flex-row items-center">
-            <button
-              onClick={() => {
-                setPage("page-1");
-                window.scroll(0, 0);
-              }}
-              className="text-center w-full md:w-auto border border-[#FF7900] text-[#FF7900] py-3 px-20 rounded"
-            >
-              Back
-            </button>
-            <button
-              // onClick={onFormSubmit}
-              type="submit"
-              className="text-center w-full md:w-auto border border-[#FF7900] bg-[#FF7900] text-white py-3 px-20 rounded"
-            >
-              Submit
-            </button>
-          </div>
+              <button
+                onClick={() => {
+                  setPage("page-1");
+                  window.scroll(0, 0);
+                }}
+                className="text-center w-full md:w-auto border border-[#FF7900] text-[#FF7900] py-3 px-20 rounded"
+              >
+                Back
+              </button>
+              <button
+                // onClick={onFormSubmit}
+                type="submit"
+                className="text-center w-full md:w-auto border border-[#FF7900] bg-[#FF7900] text-white py-3 px-20 rounded"
+              >
+                Submit
+              </button>
+            </div>
           </form>
-
-          
         </div>
       )}
     </section>
