@@ -4,10 +4,10 @@ import {
   CriteriaSection,
   FinalSection,
   FooterSection,
+  GallerySection,
   GovernorSection,
   HeroSection,
 } from '../components/landing';
-import GallerySection from '../components/landing/GallerySection';
 
 export default function Home() {
   return (
