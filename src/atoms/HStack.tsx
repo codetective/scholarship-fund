@@ -2,7 +2,7 @@ import React, { CSSProperties, FC, HTMLAttributes } from 'react';
 
 interface HStackProps extends HTMLAttributes<HTMLDivElement> {
   spacing?: string;
-  justify: CSSProperties['justifyContent'];
+  justify?: CSSProperties['justifyContent'];
 }
 
 const HStack: FC<HStackProps> = ({
@@ -17,7 +17,9 @@ const HStack: FC<HStackProps> = ({
       style={{
         justifyContent: justify,
       }}
-      className={`flex flex-row gap-${Number(spacing)} ${className}`}
+      className={`flex items-center flex-row gap-${Number(
+        spacing
+      )} ${className}`}
       {...rest}
     >
       {children}

@@ -55,3 +55,8 @@ a,
 .underline-on-hover:hover::after {
   transform: scaleX(1);
 }
+
+.no-scroll-bar::-webkit-scrollbar {
+  display: none;
+  scrollbar-width: none;
+}
