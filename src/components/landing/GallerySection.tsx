@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 
-import image from '../../../public/gallery.svg';
-import image2 from '../../../public/gallery2.svg';
-import image3 from '../../../public/gallery3.svg';
-import image4 from '../../../public/gallery4.svg';
-import image5 from '../../../public/gallery5.svg';
-import image6 from '../../../public/gallery6.svg';
-import image7 from '../../../public/gallery7.svg';
-import image8 from '../../../public/gallery8.svg';
-import image9 from '../../../public/gallery9.svg';
-import image10 from '../../../public/gallery10.svg';
-import image11 from '../../../public/gallery11.svg';
-import image12 from '../../../public/gallery12.svg';
-import testImage1 from '../../assets/images/image.webp';
-import testImage2 from '../../assets/images/image2.webp';
-import testImage3 from '../../assets/images/image3.webp';
-import testImage4 from '../../assets/images/image4.webp';
-import testImage5 from '../../assets/images/image5.webp';
+import image from '../../assets/images/image.webp';
+import image2 from '../../assets/images/image2.webp';
+import image3 from '../../assets/images/image3.webp';
+import image4 from '../../assets/images/image4.webp';
+import image5 from '../../assets/images/image5.webp';
+import image6 from '../../assets/images/image6.webp';
+import image7 from '../../assets/images/image7.webp';
+import image8 from '../../assets/images/image8.webp';
+import image9 from '../../assets/images/image9.webp';
+import image10 from '../../assets/images/image10.webp';
+import image11 from '../../assets/images/image11.webp';
+import image12 from '../../assets/images/image12.webp';
+import image13 from '../../assets/images/image13.webp';
+import image14 from '../../assets/images/image14.webp';
+import image15 from '../../assets/images/image15.webp';
+import image16 from '../../assets/images/image16.webp';
 import HStack from '../../atoms/HStack';
 import { GrGallery } from 'react-icons/gr';
 
@@ -29,15 +28,14 @@ const images: any[] = [
   image6,
   image7,
   image8,
-  image9,
   image10,
   image11,
   image12,
-  testImage1,
-  testImage2,
-  testImage3,
-  testImage4,
-  testImage5,
+  image13,
+  image14,
+  image15,
+  image16,
+  image9,
 ];
 
 function isListOdd(arr: any[]) {
