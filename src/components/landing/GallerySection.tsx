@@ -16,6 +16,10 @@ import image13 from '../../assets/images/image13.webp';
 import image14 from '../../assets/images/image14.webp';
 import image15 from '../../assets/images/image15.webp';
 import image16 from '../../assets/images/image16.webp';
+import image17 from '../../assets/images/image17.webp';
+import image18 from '../../assets/images/image18.webp';
+import image19 from '../../assets/images/image19.webp';
+import image20 from '../../assets/images/image20.webp';
 import HStack from '../../atoms/HStack';
 import { GrGallery } from 'react-icons/gr';
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
@@ -37,6 +41,10 @@ const images: any[] = [
   image15,
   image16,
   image9,
+  image17,
+  image18,
+  image19,
+  image20,
 ];
 
 function isListOdd(arr: any[]) {
