@@ -10,13 +10,13 @@ function Header({ toggle, open }) {
     <header className='fixed right-0 top-0 md:left-60 left-0 bg-gray-50 py-3 px-4 h-16'>
       <div className='max-w-4xl mx-auto'>
         <div className='flex items-center justify-between'>
-          <HStack spacing='5' className='text-lg font-bold'>
+          <HStack spacing='5' className='md:text-lg font-bold'>
             <img
               src='/logo.svg'
               loading='lazy'
               alt='logo'
-              width={50}
-              height={50}
+              width={48}
+              height={48}
               className='cursor-pointer z-[100]'
               onClick={() => {
                 navigate('/admin');

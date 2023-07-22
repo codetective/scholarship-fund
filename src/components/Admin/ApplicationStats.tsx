@@ -1,5 +1,4 @@
 import React from 'react';
-import HStack from '../../atoms/HStack';
 
 function ApplicationStats({ received, reviewed }) {
   return (
