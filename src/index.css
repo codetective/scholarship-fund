@@ -59,4 +59,5 @@ a,
 .no-scroll-bar::-webkit-scrollbar {
   display: none;
   scrollbar-width: none;
+  scroll-behavior: smooth !important;
 }

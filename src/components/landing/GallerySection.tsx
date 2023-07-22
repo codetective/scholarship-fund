@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 
 import image from '../../assets/images/image.webp';
 import image2 from '../../assets/images/image2.webp';
@@ -18,6 +18,7 @@ import image15 from '../../assets/images/image15.webp';
 import image16 from '../../assets/images/image16.webp';
 import HStack from '../../atoms/HStack';
 import { GrGallery } from 'react-icons/gr';
+import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
 
 const images: any[] = [
   image,
@@ -56,7 +57,29 @@ function getLength(arr: any[]) {
   return arr.length / 2;
 }
 
-function GallerySection() {
+enum ScrollDir {
+  'left',
+  'right',
+}
+
+export default function GallerySection() {
+  const gridRef = useRef<HTMLDivElement | null>(null);
+
+  const handleScroll = (dir: ScrollDir) => {
+    let gridbox = gridRef.current!;
+
+    switch (dir) {
+      case ScrollDir.left:
+        gridbox.scrollLeft -= 250;
+        break;
+
+      default:
+        gridbox.scrollLeft += 250;
+
+        break;
+    }
+  };
+
   return (
     <div className='pt-20'>
       <HStack spacing='2' className='px-5 py-10'>
@@ -66,6 +89,7 @@ function GallerySection() {
         </h1>
       </HStack>
       <div
+        ref={gridRef}
         className='transition-transform duration-300 grid no-scroll-bar overflow-scroll gap-5'
         style={{
           gridTemplateColumns: `repeat(${getLength(images)}, 1fr)`,
@@ -87,8 +111,26 @@ function GallerySection() {
           return <></>;
         })}
       </div>
+      <HStack justify='flex-end' className='px-5'>
+        <HStack spacing='3'>
+          <button
+            onClick={() => handleScroll(ScrollDir.left)}
+            className='shadow-md rounded-full'
+          >
+            <div className='rounded-full bg-white  text-lg hover:text-white hover:bg-green-500 transition-all ease-in  p-2'>
+              <RxCaretLeft />
+            </div>
+          </button>
+          <button
+            onClick={() => handleScroll(ScrollDir.right)}
+            className='shadow-md rounded-full'
+          >
+            <div className='rounded-full bg-white  text-lg hover:text-white hover:bg-green-500 transition-all ease-in  p-2'>
+              <RxCaretRight />
+            </div>
+          </button>
+        </HStack>
+      </HStack>
     </div>
   );
 }
-
-export default GallerySection;
