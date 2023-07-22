@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { TiTick } from "react-icons/ti";
 import { MdFileUpload } from "react-icons/md";
@@ -80,13 +80,20 @@ export default function Apply() {
   async function onFormSubmit(e) {
     e.preventDefault();
   }
+  useEffect(() => {
+    function toTop(){
+      window.scrollTo(0,0)
+    }
+    toTop();  
+  }, [])
 
   return (
     <section className="max-w-screen-lg mx-auto my-10 px-3 lg:px-0">
-      <h1 className="text-black font-semibold text-3xl">Scholarship Form</h1>
+      
 
       {page === "page-1" && (
         <div>
+          <h1 className="text-black font-semibold text-3xl">Application Form (Personal Information)</h1>
           <div className="flex items-center justify-between space-x-1 max-w-screen-md mx-auto mt-10">
             <div className="py-1 px-3 rounded-full bg-[#00563B] text-white">
               <p>1</p>
@@ -230,6 +237,7 @@ export default function Apply() {
 
       {page === "page-2" && (
         <div>
+          <h1 className="text-black font-semibold text-3xl">Application Form (Documentation)</h1>
           <div className="flex items-center justify-between space-x-1 max-w-screen-md mx-auto mt-10">
             <div className="py-3 px-3 rounded-full bg-[#00563B] text-white">
               <TiTick />
@@ -248,13 +256,14 @@ export default function Apply() {
             </div>
           </div>
           <form onSubmit={onFormSubmit}>
-            <div className="bg-[#FBE7D5] text-[#01100B] p-5 w-full text-center my-10 rounded-lg">
+            <div className="bg-[#FBE7D5] text-[#01100B] p-5 w-full text-center mt-10 mb-2 rounded-lg">
               <p>
                 This form is strictly for people with disabilities. Please fill
                 out the fields correctly to enable us process your application
                 promptly.
               </p>
             </div>
+            <p className="text-[#FF7900] font-medium mb-10">Max limit of uploaded document is 2MB</p>
 
             {/* Item */}
             <label htmlFor="certificateOfOrigin">

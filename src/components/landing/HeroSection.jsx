@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import Button from '../../atoms/Button';
 import ContainerWrap from '../../atoms/ContainerWrap';
 import HStack from '../../atoms/HStack';
 export default function HeroSection() {
+  const navigate = useNavigate();
   return (
     <div>
       <ContainerWrap>
@@ -18,11 +20,20 @@ export default function HeroSection() {
                 For Undergraduate Students With Disability in Higher institution
               </p>
               <HStack spacing='5' className='justify-center md:justify-normal'>
-                <Button className='hover:bg-transparent hover:text-orange-500 border-2 bg-[#FF7900] border-[#FF7900] text-white'>
+                <Button onClick={() => {
+                  navigate("/apply")
+                }} className='hover:bg-transparent hover:text-orange-500 border-2 bg-[#FF7900] border-[#FF7900] text-white'>
                   Apply Now!
                 </Button>
 
-                <Button className='bg-transparent hover:text-white border-2 text-green-600 border-green-800 hover:bg-[#FF7900] '>
+                <Button onClick={() => {
+                  setTimeout(() => {
+                    const section = document.getElementById("criteria");
+                    if (section) {
+                      section.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }, 100); 
+                }} className='bg-transparent hover:text-white border-2 text-green-600 border-green-800 hover:bg-[#FF7900] '>
                   Check criteria!
                 </Button>
               </HStack>
