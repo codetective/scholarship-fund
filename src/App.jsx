@@ -1,7 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import { Apply, Home } from "./pages";
 import { NavBar } from "./components";
+
 function App() {
+  
   return (
     <>
       <div className="relative">

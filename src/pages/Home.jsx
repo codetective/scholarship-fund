@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   AboutSection,
   BenefitsSection,
@@ -11,6 +12,9 @@ import {
 // import GallerySection from '../components/landing/GallerySection';
 
 export default function Home() {
+  useEffect(() => {
+    window.scroll(0,0)
+  }, [])
   return (
     <main className=''>
       <HeroSection />

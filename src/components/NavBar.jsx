@@ -51,13 +51,18 @@ const HeaderComponent = () => {
           <div className='md:flex hidden flex-row justify-end items-center gap-4'>
             <ul className='flex'>
               {navbarLinks.map((link) => (
-                <a key={link.name} href={link.path}>
+                <a key={link.name} href={`${location.pathname === "/apply" ? "/"  : link.path}`}>
                   <li
                     className={`flex p-4 active:text-[#089887] active:bg-inherit`}
-                    onClick={() => {
+                    onClick={() => {  
                       setToggleDrawer(false);
-                      navigate(link.link);
-                      window.scrollTo(0, 0);
+                      navigate("/");
+                      setTimeout(() => {
+                        const section = document.getElementById(`${link.name}`);
+                        if (section) {
+                          section.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }, 100); 
                     }}
                   >
                     <p
@@ -73,18 +78,17 @@ const HeaderComponent = () => {
                 </a>
               ))}
             </ul>
-            {/* <Link to='/apply'> */}
+
             <Button
               onClick={() => {
+                window.scroll(0,0);
                 setToggleDrawer(false);
                 navigate('/apply');
-                window.scrollTo(0, 0);
               }}
               className='hover:bg-orange-900 md:bg-[#FF7900] md:border-[#FF7900] text-white'
             >
               Apply Now!
             </Button>
-            {/* </Link> */}
           </div>
         </nav>
         {/* small screen navigation */}
@@ -96,34 +100,39 @@ const HeaderComponent = () => {
           >
             <ul className='mb-4'>
               {navbarLinks.map((link) => (
-                <a key={link.name} href={link.path}>
-                  <li
-                    className={`flex p-4 active:text-[#089887] active:bg-inherit`}
-                    onClick={() => {
-                      setToggleDrawer(false);
-                      navigate(link.link);
-                      window.scrollTo(0, 0);
-                    }}
+                <a key={link.name} href={`${location.pathname === "/apply" ? "/"  : link.path}`}>
+                <li
+                  className={`flex p-4 active:text-[#089887] active:bg-inherit`}
+                  onClick={() => {  
+                    setToggleDrawer(false);
+                    navigate("/");
+                    setTimeout(() => {
+                      const section = document.getElementById(`${link.name}`);
+                      if (section) {
+                        section.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }, 100); 
+                  }}
+                >
+                  <p
+                    className={`heading-font hover:text-orange-500 font-epilogue font-medium text-md cursor-pointer ${
+                      pathMatchRoute(link.link)
+                        ? 'text-[#089887]'
+                        : 'text-[#808191]'
+                    }`}
                   >
-                    <p
-                      className={`ml-[20px] hover:text-orange-500 font-epilogue font-medium text-sm cursor-pointer ${
-                        pathMatchRoute(link.link)
-                          ? 'text-[#089887]'
-                          : 'text-[#808191]'
-                      }`}
-                    >
-                      {link.name}
-                    </p>
-                  </li>
-                </a>
+                    {link.name}
+                  </p>
+                </li>
+              </a>
               ))}
             </ul>
             <div className='flex mx-4'>
               <Button
                 onClick={() => {
+                  window.scrollTo(0, 0);
                   setToggleDrawer(false);
                   navigate('/apply');
-                  window.scrollTo(0, 0);
                 }}
                 className='hover:bg-orange-900 md:bg-[#FF7900] md:border-[#FF7900] text-white'
               >

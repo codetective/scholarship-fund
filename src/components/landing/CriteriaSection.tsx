@@ -24,7 +24,7 @@ const criteriaList = [
 
 export default function CriteriaSection() {
   return (
-    <section className='py-20 text-[#01100B]'>
+    <section className='py-20 text-[#01100B]' id='criteria'>
       <ContainerWrap>
         <div className='flex flex-col items-start md:flex-row gap-5'>
           <div className='w-full md:w-1/2'>
