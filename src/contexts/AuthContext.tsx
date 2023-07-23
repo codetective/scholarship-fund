@@ -1,18 +1,37 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { localToken } from '../../config/constants';
 
-export const AuthContext = createContext({});
+export enum Auth {
+  'authenticated',
+  'unauthenticated',
+  'loading',
+}
+
+export const AuthContext = createContext<{
+  authState: Auth;
+  login: ((a: string, b: string) => Promise<void>) | null;
+  logout: (() => Promise<void>) | null;
+  error: string | null;
+}>({
+  authState: Auth.loading,
+  login: null,
+  logout: null,
+  error: null,
+});
+
+export const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
-  const [authState, setAuthState] = useState('loading');
+  const [authState, setAuthState] = useState<Auth>(Auth.loading);
   const [error, setError] = useState<string | null>(null);
 
   const login = async (email: string, password: string) => {
     try {
       const response = await axios.post('/api/login', { email, password });
       const { token } = response.data;
-      localStorage.setItem('token', token);
-      setAuthState('authenticated');
+      localStorage.setItem(localToken, token);
+      setAuthState(Auth.authenticated);
     } catch (error) {
       console.error('Login failed', error);
       setError('Login failed. Please try again.');
@@ -22,8 +41,8 @@ const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await axios.post('/api/logout');
-      localStorage.removeItem('token');
-      setAuthState('unauthenticated');
+      localStorage.removeItem(localToken);
+      setAuthState(Auth.unauthenticated);
     } catch (error) {
       console.error('Logout failed', error);
       setError('Logout failed. Please try again.');
@@ -32,16 +51,16 @@ const AuthProvider = ({ children }) => {
 
   const checkAuth = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem(localToken);
       if (token) {
         await axios.post('/api/checkAuth', { token });
-        setAuthState('authenticated');
+        setAuthState(Auth.authenticated);
       } else {
-        setAuthState('unauthenticated');
+        setAuthState(Auth.unauthenticated);
       }
     } catch (error) {
       console.error('Authentication check failed', error);
-      setAuthState('unauthenticated');
+      setAuthState(Auth.unauthenticated);
     }
   };
 

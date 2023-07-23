@@ -47,7 +47,7 @@ function Sidebar({ toggle = false }) {
                     isPending
                       ? Linkclasses
                       : isActive
-                      ? Linkclasses + ' bg-yellow-200'
+                      ? Linkclasses + ' bg-gray-100'
                       : Linkclasses
                   }
                 >
