@@ -49,10 +49,10 @@ const HeaderComponent = () => {
             />
           )}
           <div className='md:flex hidden flex-row justify-end items-center gap-4'>
-            <ul className='flex'>
+            <section className='flex'>
               {navbarLinks.map((link) => (
                 <a key={link.name} href={`${location.pathname === "/apply" ? "/"  : link.path}`}>
-                  <li
+                  <div
                     className={`flex p-4 active:text-[#089887] active:bg-inherit`}
                     onClick={() => {  
                       setToggleDrawer(false);
@@ -74,10 +74,10 @@ const HeaderComponent = () => {
                     >
                       {link.name}
                     </p>
-                  </li>
+                  </div>
                 </a>
               ))}
-            </ul>
+            </section>
 
             <Button
               onClick={() => {
@@ -98,10 +98,10 @@ const HeaderComponent = () => {
               !toggleDrawer ? '-translate-y-[100vh]' : 'translate-y-0'
             } transition-all duration-700`}
           >
-            <ul className='mb-4'>
+            <section className='mb-4'>
               {navbarLinks.map((link) => (
                 <a key={link.name} href={`${location.pathname === "/apply" ? "/"  : link.path}`}>
-                <li
+                <div
                   className={`flex p-4 active:text-[#089887] active:bg-inherit`}
                   onClick={() => {  
                     setToggleDrawer(false);
@@ -123,10 +123,10 @@ const HeaderComponent = () => {
                   >
                     {link.name}
                   </p>
-                </li>
+                </div>
               </a>
               ))}
-            </ul>
+            </section>
             <div className='flex mx-4'>
               <Button
                 onClick={() => {
