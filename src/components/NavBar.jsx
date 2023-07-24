@@ -69,7 +69,7 @@ const HeaderComponent = () => {
                       className={`heading-font hover:text-orange-500 font-epilogue font-medium text-md cursor-pointer ${
                         pathMatchRoute(link.link)
                           ? 'text-[#089887]'
-                          : 'text-[#808191]'
+                          : 'text-[#01100B]'
                       }`}
                     >
                       {link.name}
@@ -85,7 +85,7 @@ const HeaderComponent = () => {
                 setToggleDrawer(false);
                 navigate('/apply');
               }}
-              className='hover:bg-orange-900 md:bg-[#FF7900] md:border-[#FF7900] text-white'
+              className='hover:bg-transparent border-2 hover:text-orange-500 md:bg-[#FF7900] md:border-[#FF7900] text-white'
             >
               Apply Now!
             </Button>
@@ -118,7 +118,7 @@ const HeaderComponent = () => {
                     className={`heading-font hover:text-orange-500 font-epilogue font-medium text-md cursor-pointer ${
                       pathMatchRoute(link.link)
                         ? 'text-[#089887]'
-                        : 'text-[#808191]'
+                        : 'text-[#01100B]'
                     }`}
                   >
                     {link.name}
