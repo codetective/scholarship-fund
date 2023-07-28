@@ -10,6 +10,7 @@ import ContainerWrap from '../../../atoms/ContainerWrap';
 function AdminLayout() {
   const [sidebarState, setSidebarState] = useState(false);
   const toggleSidebarState = () => setSidebarState((prev) => !prev);
+
   return (
     <div className='relative bg-gray-50 max-w-[1380px] overflow-hidden max-h-screen'>
       <Header toggle={toggleSidebarState} open={sidebarState} />
@@ -23,7 +24,7 @@ function AdminLayout() {
               <div className='text-md py-6'>
                 Here, you can see applications submitted & reviewed :
               </div>
-              <ApplicationStats received='200' reviewed='10' />
+              <ApplicationStats />
               <UnreviviewedApplications />
             </Box>
           </div>

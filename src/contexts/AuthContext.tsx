@@ -13,6 +13,7 @@ export const AuthContext = createContext<{
   login: ((a: string, b: string) => Promise<void>) | null;
   logout: (() => Promise<void>) | null;
   error: string | null;
+  token: string | null;
   loading: boolean;
 }>({
   authState: Auth.loading,
@@ -20,6 +21,7 @@ export const AuthContext = createContext<{
   logout: null,
   error: null,
   loading: false,
+  token: null,
 });
 
 export const useAuth = () => useContext(AuthContext);
@@ -28,6 +30,7 @@ const AuthProvider = ({ children }) => {
   const [authState, setAuthState] = useState<Auth>(Auth.loading);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState<string | null>(null);
 
   const login = async (email: string, password: string) => {
     setLoading(true);
@@ -68,6 +71,7 @@ const AuthProvider = ({ children }) => {
       if (token) {
         await axios.post(backendUrl + '/api/checkAuth', { token });
         setAuthState(Auth.authenticated);
+        setToken(token);
       } else {
         setAuthState(Auth.unauthenticated);
       }
@@ -82,7 +86,9 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ authState, login, loading, logout, error }}>
+    <AuthContext.Provider
+      value={{ authState, login, loading, logout, error, token }}
+    >
       {children}
     </AuthContext.Provider>
   );

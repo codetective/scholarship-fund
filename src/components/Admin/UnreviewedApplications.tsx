@@ -2,8 +2,10 @@ import React from 'react';
 import Table from '../../atoms/Table/Table';
 import THead from '../../atoms/Table/THead';
 import TBody from '../../atoms/Table/TBody';
+import { useData } from '../../contexts/AdminDataContext';
 
 function UnreviviewedApplications() {
+  const { data } = useData();
   return (
     <div className='py-10'>
       <div className='p-4 bg-gray-50 rounded-xl'>
@@ -12,7 +14,8 @@ function UnreviviewedApplications() {
         </h3>
       </div>
       <div className='text-xs py-3'>
-        Applications submitted for reviews listed in order of submission :
+        Applications submitted for reviews listed in order of submission, click
+        for details :
       </div>
       <Table>
         <THead>
@@ -20,40 +23,47 @@ function UnreviviewedApplications() {
             #
           </th>
           <th scope='col' className='px-6 py-4'>
-            Heading
+            Name
           </th>
           <th scope='col' className='px-6 py-4'>
-            Heading
+            Gender
           </th>
           <th scope='col' className='px-6 py-4'>
-            Heading
+            LGA
           </th>
           <th scope='col' className='px-6 py-4'>
-            Heading
+            Programme
+          </th>
+          <th scope='col' className='px-6 py-4'>
+            Course
+          </th>
+          <th scope='col' className='px-6 py-4'>
+            DOB
           </th>
         </THead>
         <TBody>
-          <tr className='border-b dark:border-neutral-500'>
-            <td className='whitespace-nowrap px-6 py-4 font-medium'>1</td>
-            <td className='whitespace-nowrap px-6 py-4'>Cell</td>
-            <td className='whitespace-nowrap px-6 py-4'>Cell</td>
-            <td className='whitespace-nowrap px-6 py-4'>Cell</td>
-            <td className='whitespace-nowrap px-6 py-4'>Cell</td>
-          </tr>
-          <tr className='border-b dark:border-neutral-500'>
-            <td className='whitespace-nowrap px-6 py-4 font-medium '>2</td>
-            <td className='whitespace-nowrap px-6 py-4'>Cell</td>
-            <td className='whitespace-nowrap px-6 py-4'>Cell</td>
-            <td className='whitespace-nowrap px-6 py-4'>Cell</td>
-            <td className='whitespace-nowrap px-6 py-4'>Cell</td>
-          </tr>
-          <tr className='border-b '>
-            <td className='whitespace-nowrap px-6 py-4 font-medium '>3</td>
-            <td className='whitespace-nowrap px-6 py-4'>Cell</td>
-            <td className='whitespace-nowrap px-6 py-4'>Cell</td>
-            <td className='whitespace-nowrap px-6 py-4'>Cell</td>
-            <td className='whitespace-nowrap px-6 py-4'>Cell</td>
-          </tr>
+          {data?.first_unreviewed.map((d, i) => {
+            return (
+              <tr
+                key={d.id}
+                className='border-b hover:bg-gray-50 cursor-pointer dark:border-neutral-500'
+              >
+                <td className='whitespace-nowrap px-6 py-4 font-medium'>
+                  {i + 1}
+                </td>
+                <td className='whitespace-nowrap px-6 py-4'>{d.name}</td>
+                <td className='whitespace-nowrap px-6 py-4'>{d.gender}</td>
+                <td className='whitespace-nowrap px-6 py-4'>{d.lga}</td>
+                <td className='whitespace-nowrap px-6 py-4'>
+                  {d.programme_of_study}
+                </td>
+                <td className='whitespace-nowrap px-6 py-4'>
+                  {d.course_of_study}
+                </td>
+                <td className='whitespace-nowrap px-6 py-4'>{d.dob}</td>
+              </tr>
+            );
+          })}
         </TBody>
       </Table>
     </div>
