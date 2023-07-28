@@ -40,6 +40,7 @@ const AuthProvider = ({ children }) => {
         password,
       });
       const { token } = response.data;
+      setToken(token);
       localStorage.setItem(localToken, token);
       setAuthState(Auth.authenticated);
       setLoading(false);
@@ -54,9 +55,18 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       const token = localStorage.getItem(localToken);
-      await axios.post(backendUrl + '/api/checkAuth', { token });
+      await axios.post(
+        backendUrl + '/api/logout',
+        {},
+        {
+          headers: {
+            Authorization: 'Bearer ' + token,
+          },
+        }
+      );
       localStorage.removeItem(localToken);
       setAuthState(Auth.unauthenticated);
+      setToken(null);
       setLoading(false);
     } catch (error) {
       console.error('Logout failed', error);
@@ -69,7 +79,15 @@ const AuthProvider = ({ children }) => {
     try {
       const token = localStorage.getItem(localToken);
       if (token) {
-        await axios.post(backendUrl + '/api/checkAuth', { token });
+        await axios.post(
+          backendUrl + '/api/checkAuth',
+          {},
+          {
+            headers: {
+              Authorization: 'Bearer ' + token,
+            },
+          }
+        );
         setAuthState(Auth.authenticated);
         setToken(token);
       } else {

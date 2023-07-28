@@ -3,9 +3,10 @@ import Table from '../../atoms/Table/Table';
 import THead from '../../atoms/Table/THead';
 import TBody from '../../atoms/Table/TBody';
 import { useData } from '../../contexts/AdminDataContext';
+import ErrorAlert from '../../atoms/ErrorAlert';
 
-function UnreviviewedApplications() {
-  const { data } = useData();
+function UnreviviewedApplications({ showModal }) {
+  const { data, error } = useData();
   return (
     <div className='py-10'>
       <div className='p-4 bg-gray-50 rounded-xl'>
@@ -17,6 +18,11 @@ function UnreviviewedApplications() {
         Applications submitted for reviews listed in order of submission, click
         for details :
       </div>
+      {error && (
+        <ErrorAlert>
+          Error fetching data, check your internet and refresh.
+        </ErrorAlert>
+      )}
       <Table>
         <THead>
           <th scope='col' className='px-6 py-4'>
@@ -46,6 +52,9 @@ function UnreviviewedApplications() {
             return (
               <tr
                 key={d.id}
+                onClick={() => {
+                  showModal(d);
+                }}
                 className='border-b hover:bg-gray-50 cursor-pointer dark:border-neutral-500'
               >
                 <td className='whitespace-nowrap px-6 py-4 font-medium'>
