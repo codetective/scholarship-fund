@@ -49,10 +49,10 @@ const HeaderComponent = () => {
             />
           )}
           <div className='md:flex hidden flex-row justify-end items-center gap-4'>
-            <ul className='flex'>
+            <section className='flex'>
               {navbarLinks.map((link) => (
                 <a key={link.name} href={`${location.pathname === "/apply" ? "/"  : link.path}`}>
-                  <li
+                  <div
                     className={`flex p-4 active:text-[#089887] active:bg-inherit`}
                     onClick={() => {  
                       setToggleDrawer(false);
@@ -69,15 +69,15 @@ const HeaderComponent = () => {
                       className={`heading-font hover:text-orange-500 font-epilogue font-medium text-md cursor-pointer ${
                         pathMatchRoute(link.link)
                           ? 'text-[#089887]'
-                          : 'text-[#808191]'
+                          : 'text-[#01100B]'
                       }`}
                     >
                       {link.name}
                     </p>
-                  </li>
+                  </div>
                 </a>
               ))}
-            </ul>
+            </section>
 
             <Button
               onClick={() => {
@@ -85,7 +85,7 @@ const HeaderComponent = () => {
                 setToggleDrawer(false);
                 navigate('/apply');
               }}
-              className='hover:bg-orange-900 md:bg-[#FF7900] md:border-[#FF7900] text-white'
+              className='hover:bg-transparent border-2 hover:text-orange-500 md:bg-[#FF7900] md:border-[#FF7900] text-white'
             >
               Apply Now!
             </Button>
@@ -98,10 +98,10 @@ const HeaderComponent = () => {
               !toggleDrawer ? '-translate-y-[100vh]' : 'translate-y-0'
             } transition-all duration-700`}
           >
-            <ul className='mb-4'>
+            <section className='mb-4'>
               {navbarLinks.map((link) => (
                 <a key={link.name} href={`${location.pathname === "/apply" ? "/"  : link.path}`}>
-                <li
+                <div
                   className={`flex p-4 active:text-[#089887] active:bg-inherit`}
                   onClick={() => {  
                     setToggleDrawer(false);
@@ -118,15 +118,15 @@ const HeaderComponent = () => {
                     className={`heading-font hover:text-orange-500 font-epilogue font-medium text-md cursor-pointer ${
                       pathMatchRoute(link.link)
                         ? 'text-[#089887]'
-                        : 'text-[#808191]'
+                        : 'text-[#01100B]'
                     }`}
                   >
                     {link.name}
                   </p>
-                </li>
+                </div>
               </a>
               ))}
-            </ul>
+            </section>
             <div className='flex mx-4'>
               <Button
                 onClick={() => {

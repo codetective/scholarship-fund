@@ -32,9 +32,9 @@ export default function BenefitsSection() {
 
               <div className="justify-center flex-initial md:ml-[100px] font-medium lg:w-[50%]">
                 <div className="mb-5">
-                  <h3 className="text-[#FF7900] text-lg font-semibold pb-2 md:text-xl">
+                  <h2 className="text-[#FF7900] text-lg font-semibold pb-2 md:text-xl">
                     Tuition Coverage:
-                  </h3>
+                  </h2>
                   <p className="text-[#01100B] text-md md:text-[18px]">
                     The education intervention fund covers a significant portion
                     of tuition fees, lightening the financial burden on students
@@ -42,9 +42,9 @@ export default function BenefitsSection() {
                   </p>
                 </div>
                 <div className="mb-5">
-                  <h3 className="text-[#FF7900] font-semibold pb-2 text-lg md:text-xl">
+                  <h2 className="text-[#FF7900] font-semibold pb-2 text-lg md:text-xl">
                     Stipend for Living Expenses:
-                  </h3>
+                  </h2>
                   <p className="text-[#01100B] text-md md:text-[18px]">
                     In addition to tuition coverage, selected recipients will
                     receive a stipend to assist with their living expenses,
@@ -52,9 +52,9 @@ export default function BenefitsSection() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-[#FF7900] font-semibold pb-2 text-lg md:text-xl">
+                  <h2 className="text-[#FF7900] font-semibold pb-2 text-lg md:text-xl">
                     Skill Developmenmt Opportunities:
-                  </h3>
+                  </h2>
                   <p className="text-[#01100B] text-md md:text-[18px]">
                     Recipients of the intervention fund will have access to
                     various skill development programs, workshops, and training

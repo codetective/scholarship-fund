@@ -1,3 +1,10 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "rewrites": [
+    {
+      "source": "^/(robots\\.txt)$",
+      "destination": "/$1",
+      "has": [{ "type": "header", "key": "User-Agent", "value": "!" }]
+    },
+    { "source": "/(.*)", "destination": "/" }
+  ]
 }
