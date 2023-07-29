@@ -85,7 +85,7 @@ const HeaderComponent = () => {
                 setToggleDrawer(false);
                 navigate('/apply');
               }}
-              className='hover:bg-transparent border-2 hover:text-orange-500 md:bg-[#FF7900] md:border-[#FF7900] text-white'
+              className='hover:bg-transparent bg-green-600 border-2 hover:text-orange-500 md:bg-[#FF7900] md:border-[#FF7900] text-white'
             >
               Apply Now!
             </Button>
@@ -134,7 +134,7 @@ const HeaderComponent = () => {
                   setToggleDrawer(false);
                   navigate('/apply');
                 }}
-                className='hover:bg-orange-900 md:bg-[#FF7900] md:border-[#FF7900] text-white'
+                className='hover:bg-orange-900 bg-green-600 md:bg-[#FF7900] md:border-[#FF7900] text-white'
               >
                 Apply Now!
               </Button>

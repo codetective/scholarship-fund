@@ -8,7 +8,7 @@ const navbarLinks = [
         name: 'Benefits'
     },
     {
-        path: '#contact',
+        path: '#footer',
         name: 'Contact Us'
     },
 ]
