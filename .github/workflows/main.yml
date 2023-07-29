@@ -33,7 +33,7 @@ jobs:
       - name: FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          ftp-server: ftp.educationfundswd.com.ng
-          ftp-username: frontend@educationfundswd.com.ng
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          server: ftp.educationfundswd.com.ng
+          username: frontend@educationfundswd.com.ng
+          password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/
