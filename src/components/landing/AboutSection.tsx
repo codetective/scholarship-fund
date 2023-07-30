@@ -39,6 +39,9 @@ export default function AboutSection() {
             individuals. We are committed to fostering an inclusive environment
             where students with disabilities can thrive academically,
             personally, and professionally.
+            <br />
+            <br />
+            This opportunity is also open for non-indigenous students resident and studying in Tertiary institutions in Akwa Ibom State.
           </p>
         </div>
       </ContainerWrap>

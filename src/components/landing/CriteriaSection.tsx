@@ -5,7 +5,7 @@ import { GoChecklist } from 'react-icons/go';
 
 function CriteriaListItem({ children }) {
   return (
-    <li className='flex gap-2 items-start  text-[#01100B] text-md md:text-lg  mb-2'>
+    <li className='flex gap-2 items-start text-[#01100B] text-md md:text-lg  mb-2'>
       <img src='check.svg' alt='check' width={20} />
 
       <span>{children}</span>
@@ -14,7 +14,7 @@ function CriteriaListItem({ children }) {
 }
 
 const criteriaList = [
-  'Must be a Student in a Tertiary Institution in Akwa Ibom',
+  'Must be a Student (indigenous or not) in a Tertiary Institution in Akwa Ibom',
   'Must have verifiable document to prove Studentship',
   'Must have Local Government of Origin Document',
   'Must be a Student with Disability with verifiable proof',
