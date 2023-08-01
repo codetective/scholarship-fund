@@ -40,7 +40,7 @@ const AdminDataProvider = (props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const { token } = useAuth();
+  const { token, handleUnauthorized } = useAuth();
 
   const fetchDashboard = useCallback(async () => {
     setLoading(true);
@@ -56,6 +56,9 @@ const AdminDataProvider = (props) => {
       setData(response.data);
     } catch (error) {
       setError('Error fetching data');
+      if (error.response && error.response.status === 401) {
+        handleUnauthorized!();
+      }
       console.error('Error fetching data:', error);
     } finally {
       setLoading(false);

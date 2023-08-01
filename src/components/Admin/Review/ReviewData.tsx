@@ -9,7 +9,7 @@ import ErrorAlert from '../../../atoms/ErrorAlert';
 type Docs = {};
 
 function ReviewData({ data }: { data: TableData | null }) {
-  const { token } = useAuth();
+  const { token, handleUnauthorized } = useAuth();
 
   const [docs, setDocs] = useState<Docs | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -30,6 +30,9 @@ function ReviewData({ data }: { data: TableData | null }) {
     } catch (error) {
       setError('Error fetching data');
       console.error('Error fetching data:', error);
+      if (error.response && error.response.status === 401) {
+        handleUnauthorized!();
+      }
     } finally {
       setLoading(false);
     }

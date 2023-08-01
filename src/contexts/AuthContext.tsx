@@ -15,6 +15,7 @@ export const AuthContext = createContext<{
   error: string | null;
   token: string | null;
   loading: boolean;
+  handleUnauthorized: (() => void) | null;
 }>({
   authState: Auth.loading,
   login: null,
@@ -22,6 +23,7 @@ export const AuthContext = createContext<{
   error: null,
   loading: false,
   token: null,
+  handleUnauthorized: null,
 });
 
 export const useAuth = () => useContext(AuthContext);
@@ -99,13 +101,26 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const handleUnauthorized = () => {
+    alert('Session expired, please log in again');
+    checkAuth();
+  };
+
   useEffect(() => {
     checkAuth();
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ authState, login, loading, logout, error, token }}
+      value={{
+        authState,
+        login,
+        loading,
+        logout,
+        error,
+        token,
+        handleUnauthorized,
+      }}
     >
       {children}
     </AuthContext.Provider>
