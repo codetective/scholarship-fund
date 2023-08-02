@@ -24,11 +24,9 @@ export type Documents = {
 };
 
 export default function Apply() {
-  const [page, setPage] = useState('page-2');
+  const [page, setPage] = useState('page-1');
   const [loading, setLoading] = useState(false);
-  const [applicationId, setApplicationId] = useState(
-    'aeab95d0-2961-11ee-a379-d9193efdffee'
-  );
+  const [applicationId, setApplicationId] = useState(null);
 
   const [documents, setDocuments] = useState<Documents>({
     certificateOfOrigin: null,
