@@ -89,9 +89,7 @@ function FeeReceipt({ doc, app_id, setDocuments }) {
           ) : (
             <MdFileUpload size={25} />
           )}
-          <span>
-            {doc ? doc.substr(0, doc.length / 2) + '...' : 'jpeg, png, jpg'}
-          </span>
+          <span>{doc ? 'Image saved' : 'jpeg, png, jpg'}</span>
         </label>
       </div>
       <Rodal
