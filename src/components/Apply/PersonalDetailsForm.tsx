@@ -166,7 +166,7 @@ function PersonalDetailsForm({
             type='submit'
             className='text-center w-full md:w-auto border border-[#FF7900] bg-[#FF7900] text-white py-3 px-20 rounded'
           >
-            {loading ? <i>'subbmitting...'</i> : 'Next'}
+            {loading ? <i>'submitting...'</i> : 'Next'}
           </button>
         </div>
       </form>
